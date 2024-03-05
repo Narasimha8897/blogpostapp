@@ -1,4 +1,4 @@
-name: Deploy React Book App from GitHub to AWS Elastic Beanstalk
+name: Deploy Blog App from GitHub to AWS Elastic Beanstalk
 on:
   # activates the workflow when there is a push on the main branch
   push:
@@ -17,7 +17,7 @@ jobs:
 
       - name: Generate Deployment Package 
         # zip all files except .git
-        run: zip -r BookAppFrontend.zip * -x "**.git**"
+        run: zip -r BLOG-APP.zip * -x "**.git**"
 
       - name: Get timestamp
         uses: gerred/actions/current-time@master
@@ -43,7 +43,7 @@ jobs:
           environment_name: blogspostsapp-env
           version_label: "app-${{ steps.format-time.outputs.replaced }}"
           region: ap-south-1
-          deployment_package: BookAppFrontend.zip
+          deployment_package: BLOG-APP.zip
 
       - name: Deployed!
         run: echo App deployed to ELB
