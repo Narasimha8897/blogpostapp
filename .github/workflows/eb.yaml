@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest # the OS your job should run on
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
     steps:
       - name: Checkout Latest Repo
         # checks out your repository under the GitHub workspace so that your workflow can access it
@@ -17,7 +17,7 @@ jobs:
 
       - name: Generate Deployment Package 
         # zip all files except .git
-        run: zip -r BLOG-APP.zip * -x "**.git**"
+        run: zip -r BLOG-APP-NEW.zip * -x "**.git**"
 
       - name: Get timestamp
         uses: gerred/actions/current-time@master
@@ -43,7 +43,7 @@ jobs:
           environment_name: blogspostsapp-env
           version_label: "app-${{ steps.format-time.outputs.replaced }}"
           region: ap-south-1
-          deployment_package: BLOG-APP.zip
+          deployment_package: BLOG-APP-NEW.zip
 
       - name: Deployed!
         run: echo App deployed to ELB
