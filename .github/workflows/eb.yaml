@@ -27,4 +27,4 @@ jobs:
         aws configure set aws_access_key_id ${{ secrets.ACCESS_KEY }}
         aws configure set aws_secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
         aws elasticbeanstalk create-application-version --application-name "blogspostsapp" --version-label $GITHUB_SHA --source-bundle S3Bucket="elasticbeanstalk-ap-south-1-940035950318",S3Key="$GITHUB_SHA.zip"
-        aws elasticbeanstalk update-environment --environment-name "blogspostsapp" --version-label $GITHUB_SHA        
+        aws elasticbeanstalk update-environment --environment-name "blogspostsapp-env" --version-label $GITHUB_SHA        
